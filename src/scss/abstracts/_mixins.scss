@@ -1,0 +1,24 @@
+@mixin strike($line, $bg) {
+  text-align: center;
+  position: relative;
+  margin: 30px auto;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: $line;
+  }
+
+  .text {
+    position: relative;
+    background-color: $bg;
+    padding: 3px 10px;
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}

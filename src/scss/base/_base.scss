@@ -1,8 +1,16 @@
 html,
 body {
+  margin: 0;
+  padding: 0;
   font-weight: 400;
   font-size: 1em;
   height: 100%;
+}
+* {
+  box-sizing: border-box;
+  font-family: $font;
+  font-size: 1em;
+  font-weight: 500;
 }
 
 a {
@@ -35,16 +43,12 @@ a {
   }
 }
 
-
-@media  screen and (max-width: 1420px) {
+@media screen and (max-width: 1420px) {
   html,
   body {
-   
-     font-size: 1rem;
+    font-size: 1rem;
   }
 }
-
-
 
 .container {
   &-fluid {
@@ -55,7 +59,7 @@ a {
       margin: auto;
     }
   }
-  &-wrapper{
+  &-wrapper {
     @extend .container-fluid;
     width: 100%;
   }

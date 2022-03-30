@@ -1,4 +1,3 @@
-
 //new gridbreakpoing
 $grid-breakpoints: (
   xs: 0,
@@ -9,5 +8,13 @@ $grid-breakpoints: (
   xxl: 1420px,
 );
 
+$th_light: #e1f5c4;
+$th_red: #e84a5f;
+$th_lred: #ff847c;
+$th_dark: #2a363b;
+$th_blue: #355c7d;
 
+$header_color: #610000;
 
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900);
+$font: "Roboto", Helvetica, sans-serif;
