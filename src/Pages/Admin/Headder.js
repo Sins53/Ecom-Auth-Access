@@ -6,13 +6,11 @@ import {
   Offcanvas,
   NavDropdown,
 } from "react-bootstrap";
-import { Link, Outlet } from "react-router-dom";
-import Notification from "../Components/Notification";
+import { Link } from "react-router-dom";
 
-const Main = () => {
+const Headder = () => {
   return (
     <>
-      <Notification />
       <Navbar
         bg="primary"
         variant="dark"
@@ -40,17 +38,20 @@ const Main = () => {
                 <Offcanvas.Body className="bg-info">
                   <Nav className="justify-content-end flex-grow-1 pe-3">
                     <Nav.Link>
-                      <Link to={"/"}>Home</Link>
+                      <Link to={"/"}>Lobby</Link>
+                    </Nav.Link>
+                    <Nav.Link>
+                      <Link to={"/admin"}>Admin Page</Link>
                     </Nav.Link>
                     <NavDropdown
                       title="User Settings"
                       id="offcanvasNavbarDropdown"
                     >
                       <NavDropdown.Item>
-                        <Link to={"/user"}>Create User </Link>
+                        <Link to={"/admin/user"}>Create User </Link>
                       </NavDropdown.Item>
                       <NavDropdown.Item>
-                        <Link to={"/roles"}>Role Setting</Link>
+                        <Link to={"/admin/roles"}>Role Setting</Link>
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
                       <NavDropdown.Item>Something else here</NavDropdown.Item>
@@ -62,12 +63,8 @@ const Main = () => {
           )}
         </Container>
       </Navbar>
-
-      <div className="container">
-        <Outlet />
-      </div>
     </>
   );
 };
 
-export default Main;
+export default Headder;

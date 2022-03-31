@@ -1,7 +1,13 @@
 import React from "react";
+import Headder from "./Headder";
 
 const User = () => {
-  return <div>User</div>;
+  return (
+    <>
+      <Headder />
+      User
+    </>
+  );
 };
 
 export default User;

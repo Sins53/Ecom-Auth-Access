@@ -1,0 +1,26 @@
+.Home {
+  height: 100vh;
+  font-family: sans-serif;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(33, 1, 75),
+    rgba(255, 0, 0, 0)
+  );
+
+  .box {
+    width: 40%;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(
+      to left,
+      rgb(33, 1, 75),
+      rgba(255, 0, 0, 0)
+    );
+    h3 {
+      color: rgb(37, 31, 0);
+    }
+  }
+}
