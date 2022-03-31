@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const EcomAccess = () => {
   const userName = localStorage.getItem("name");
   const [name, setName] = useState("Customer");
+  const navigate = useNavigate();
 
   var text = "";
   if (userName) {
@@ -16,7 +17,16 @@ const EcomAccess = () => {
     } else if (text.includes("creator")) {
       setName("Product Creator");
     }
-  }, [userName]);
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    window.location.reload();
+  };
+  const goToLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <>
@@ -24,9 +34,23 @@ const EcomAccess = () => {
         <div className="box">
           <div className="text-center">
             {userName ? (
-              <p className="text-success">You are logged in as {name}</p>
+              <>
+                <p className="text-success">You are logged in as {name}</p>
+                <div className="text-end">
+                  <button className="btn btn-danger mb-3" onClick={logout}>
+                    Logout
+                  </button>
+                </div>
+              </>
             ) : (
-              <p className="text-danger">You are not Logged in!</p>
+              <>
+                <p className="text-danger">You are not Logged in!</p>
+                <div className="text-end">
+                  <button className="btn btn-primary mb-3" onClick={goToLogin}>
+                    Login
+                  </button>
+                </div>
+              </>
             )}
             <h2 className="text-success">Navigating Options</h2>
           </div>

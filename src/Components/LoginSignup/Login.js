@@ -49,8 +49,6 @@ const Login = (props) => {
         localStorage.setItem("token", token.data.token);
         localStorage.setItem("name", token.data.user.name);
         navigate("/");
-      } else {
-        alert(token.message);
       }
     }
     // if (isToken !== null) {
