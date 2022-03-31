@@ -1,14 +1,10 @@
-import React from "react";
-import {
-  Navbar,
-  Nav,
-  Container,
-  Offcanvas,
-  NavDropdown,
-} from "react-bootstrap";
+import React, { useState } from "react";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
 
 const EcomNavbar = () => {
   const userName = localStorage.getItem("name");
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <>
@@ -36,7 +32,7 @@ const EcomNavbar = () => {
                 {userName ? (
                   <NavDropdown title={userName} id="collasible-nav-dropdown">
                     <NavDropdown.Item href="#action/3.2">
-                      somethig
+                      something
                     </NavDropdown.Item>
                     <NavDropdown.Item href="#">
                       Change Password
@@ -61,8 +57,28 @@ const EcomNavbar = () => {
                 )}
               </Nav>
             </Navbar.Collapse>
+            <div className="container col-auto">
+              <span style={{ color: darkMode ? "grey" : "yellow" }}>☀︎</span>
+              <div className="switch-checkbox">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    onChange={() => setDarkMode(!darkMode)}
+                  />
+                  <span className="slider round"> </span>
+                </label>
+              </div>
+              <span style={{ color: darkMode ? "#c96dfd" : "grey" }}>☽</span>
+            </div>
           </Container>
         </Navbar>
+      </div>
+
+      <div className={darkMode ? "dark-mode" : "light-mode"}>
+        <div>
+          <h1>Cool its {darkMode ? "Dark" : "Light"} Mode </h1>
+          <Outlet />
+        </div>
       </div>
     </>
   );
