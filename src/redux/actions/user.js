@@ -1,22 +1,48 @@
 import axios from "axios";
-import { PRODUCT_LIST_FETCHING, PRODUCT_LIST_SUCCESS } from "../contants";
+import { GET_ALL_USER, GET_USER } from "../constants";
 
-export const fetchProduct = () => async (dispatch) => {
-  dispatch({
-    type: PRODUCT_LIST_FETCHING,
-  });
-  let response = await commonApi();
+const base_URL = "https://ecom-react-task.herokuapp.com/user/";
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMDg5ZjQwMi04NjU0LTQwYTgtOTI3NC0wMWJmZGQ1NDllZDUiLCJpYXQiOjE2NDg2NDMwNjMwODksImV4cCI6MTY0ODY0MzA3MDI4OX0.E2qluIUpDdAoxrU_lLphZPkRM__Z6F_nY2vJVICyyTE";
 
-  if (response?.data?.data?.product) {
-    dispatch({
-      type: PRODUCT_LIST_SUCCESS,
-      payload: response.data.data.product,
+export const getUser = (url) => async (dispatch) => {
+  try {
+    const response = await axios({
+      method: "GET",
+      url: base_URL + url,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
+    if (response?.data?.success) {
+      dispatch({
+        type: GET_USER,
+        payload: response?.data?.data,
+      });
+    }
+  } catch (err) {
+    alert(err);
   }
 };
 
-export const commonApi = async () => {
-  return await axios.get(
-    "https://electronic-ecommerce.herokuapp.com/api/v1/product"
-  );
+export const getAllUsers = () => async (dispatch) => {
+  try {
+    const response = await axios({
+      method: "GET",
+      url: base_URL,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response?.data?.success) {
+      dispatch({
+        type: GET_ALL_USER,
+        payload: response?.data?.data,
+      });
+    }
+  } catch (err) {
+    alert(err);
+  }
 };

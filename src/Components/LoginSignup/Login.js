@@ -47,6 +47,7 @@ const Login = (props) => {
     if (token !== null) {
       if (token?.success && token.data?.token) {
         localStorage.setItem("token", token.data.token);
+        localStorage.setItem("name", token.data.user.name);
         navigate("/");
       } else {
         alert(token.message);

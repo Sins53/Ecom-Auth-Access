@@ -7,10 +7,12 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
+import Notification from "../Components/Notification";
 
 const Main = () => {
   return (
     <>
+      <Notification />
       <Navbar
         bg="primary"
         variant="dark"
@@ -37,7 +39,9 @@ const Main = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body className="bg-info">
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link>Home</Nav.Link>
+                    <Nav.Link>
+                      <Link to={"/"}>Home</Link>
+                    </Nav.Link>
                     <NavDropdown
                       title="User Settings"
                       id="offcanvasNavbarDropdown"
