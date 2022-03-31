@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 const MissingPage = () => {
   const navigate = useNavigate();
 
-  const goBack = () => {
+  const goBack = () => navigate(-1);
+
+  const goHome = () => {
     navigate("/");
   };
   return (
@@ -722,9 +724,14 @@ const MissingPage = () => {
                 a mystery. But you can click the button below to go back to the
                 homepage.
               </p>
-              <button className="btn btn-info" onClick={goBack}>
-                HOME
-              </button>
+              <div>
+                <button className="btn btn-primary mr-5" onClick={goHome}>
+                  HOME
+                </button>
+                <button className="btn btn-info" onClick={goBack}>
+                  Go Back
+                </button>
+              </div>
             </div>
           </div>
         </div>

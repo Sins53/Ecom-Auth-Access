@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import LoginSignup from "./Components/LoginSignup";
 import RequireAuth from "./Components/RequireAuth";
 import EcomAccess from "./EcomAccess";
+import Shop from "./EcomAccess/Ecom/Shop";
 import Home from "./EcomAccess/Home";
 import Admin from "./Pages/Admin";
 import Role from "./Pages/Admin/Role";
@@ -16,6 +17,7 @@ function App() {
     { link: "/", name: EcomAccess },
     { link: "/login/", name: LoginSignup },
     { link: "/home/", name: Home },
+    { link: "/shop/", name: Shop },
     { link: "/unauthorized/", name: UnautorizedPage },
     { link: "*", name: MissingPage },
   ];

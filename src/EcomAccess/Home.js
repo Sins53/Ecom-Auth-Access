@@ -1,7 +1,12 @@
 import React from "react";
+import Ecom from "./Ecom";
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Ecom />
+    </>
+  );
 };
 
 export default Home;
