@@ -1,7 +1,7 @@
 import React from "react";
-import offer1 from "../../assets/images/offer1.jpeg";
-import offer2 from "../../assets/images/offer2.jpeg";
-import offer3 from "../../assets/images/offer3.jpg";
+import offer1 from "../../../assets/images/offer1.jpeg";
+import offer2 from "../../../assets/images/offer2.jpeg";
+import offer3 from "../../../assets/images/offer3.jpg";
 
 const Slider = () => {
   return (

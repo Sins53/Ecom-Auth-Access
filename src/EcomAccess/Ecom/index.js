@@ -1,9 +1,9 @@
 import React from "react";
 import EcomNavbar from "./EcomNavbar";
-import Footer from "./Footer";
-
+import Footer from "./Main/Footer";
 import { useSelector } from "react-redux";
-import Slider from "./Slider";
+import Slider from "./Main/Slider";
+import Promotions from "./Main/Promotions";
 
 const Ecom = () => {
   const darkMode = useSelector((state) => state.dark.darkMode);
@@ -16,6 +16,7 @@ const Ecom = () => {
         <Slider />
         <br />
         <br />
+        <Promotions darkMode={darkMode} />
         <Footer />
       </div>
     </>
