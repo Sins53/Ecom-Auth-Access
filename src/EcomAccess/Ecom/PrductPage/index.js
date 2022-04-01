@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Adder from "../../../Components/Adder";
 import { addCart } from "../../../redux/actions/cart";
@@ -12,8 +12,13 @@ const ProductPage = () => {
   const productList = useSelector((state) => state.product.products);
   const orderValue = useSelector((state) => state.order);
   const cart = useSelector((state) => state.cart.cart);
+  const darkMode = useSelector((state) => state.dark.darkMode);
 
   var id1 = Number(id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const dispatch = useDispatch();
   var category = "";
@@ -60,43 +65,46 @@ const ProductPage = () => {
   return (
     <>
       <EcomNavbar />
-      <div className="container mt-5">
-        {arr.map((item) => {
-          return (
-            <>
-              <div class="row justify-content-center">
-                <div class="col-6">
-                  <img className="qwe" src={imgUrl + item.image} alt="" />
-                </div>
-                <div class="col-4">
-                  <div>
-                    <h2>{item.name}</h2>
-                    <h3>{item.price}</h3>
-                    <h3>Description :</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit ut blanditiis id laboriosam. Repellat voluptatum a,
-                      sed fugiat, nihil perspiciatis, tempora veniam assumenda
-                      pariatur unde quidem sit quam quod numquam!
-                    </p>
-                    <Adder id={item.id} stock={item.stock} />
-                    <button
-                      className="ListCard-btn mt-4"
-                      onClick={() => updateCart(item)}
-                    >
-                      Add to Cart
-                    </button>
+
+      <div className={darkMode ? "dark-mode" : "light-mode"}>
+        <div className="container pt-5">
+          {arr.map((item) => {
+            return (
+              <>
+                <div class="row justify-content-center">
+                  <div class="col-6">
+                    <img className="qwe" src={imgUrl + item.image} alt="" />
+                  </div>
+                  <div class="col-4">
+                    <div>
+                      <h2>{item.name}</h2>
+                      <h3>{item.price}</h3>
+                      <h3>Description :</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Fugit ut blanditiis id laboriosam. Repellat voluptatum
+                        a, sed fugiat, nihil perspiciatis, tempora veniam
+                        assumenda pariatur unde quidem sit quam quod numquam!
+                      </p>
+                      <Adder id={item.id} stock={item.stock} />
+                      <button
+                        className="ListCard-btn mt-4"
+                        onClick={() => updateCart(item)}
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="mt-5">
-                <h2>Similar Items:</h2>
-                <ListCard arrReduced={arrReduced} />
-              </div>
-            </>
-          );
-        })}
-        <br /> <br /> <br /> <br />
+                <div className="mt-5">
+                  <h2>Similar Items:</h2>
+                  <ListCard arrReduced={arrReduced} />
+                </div>
+              </>
+            );
+          })}
+          <br /> <br /> <br /> <br />
+        </div>
       </div>
     </>
   );

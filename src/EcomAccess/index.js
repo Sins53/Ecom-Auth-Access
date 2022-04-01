@@ -37,7 +37,7 @@ const EcomAccess = () => {
               <>
                 <p className="text-success">You are logged in as {name}</p>
                 <div className="text-end">
-                  <button className="btn btn-danger mb-3" onClick={logout}>
+                  <button className="btn mb-3 fun" onClick={logout}>
                     Logout
                   </button>
                 </div>
@@ -46,7 +46,7 @@ const EcomAccess = () => {
               <>
                 <p className="text-danger">You are not Logged in!</p>
                 <div className="text-end">
-                  <button className="btn btn-primary mb-3" onClick={goToLogin}>
+                  <button className="btn mb-3 fun" onClick={goToLogin}>
                     Login
                   </button>
                 </div>

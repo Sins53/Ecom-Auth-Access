@@ -28,7 +28,6 @@ const CheckoutForm = (props) => {
     initialValues,
     validationSchema,
     onSubmit: () => {
-      // alert("submitted");
       setFormSubmit(false);
     },
   });

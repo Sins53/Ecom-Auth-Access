@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { useSelector } from "react-redux";
 import useToWords from "../../../CustomHooks/useToWords";
 
@@ -30,7 +30,13 @@ const CheckoutOrders = () => {
           return (
             <h5>
               <img className="Cart-img" src={imgUrl + item.image} alt="" />
-              {item.name} * Rs. {item.r} * {item.ordered} pcs.
+              <span className="ml-3" style={{ fontSize: "1.2rem" }}>
+                {item.name} * Rs. {item.r} *
+                <span className="text-primary" style={{ fontSize: "1.2rem" }}>
+                  {item.ordered}
+                  {item.ordered === 1 ? "pc." : "pcs."}
+                </span>
+              </span>
             </h5>
           );
         })}

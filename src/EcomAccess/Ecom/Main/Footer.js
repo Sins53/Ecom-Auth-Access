@@ -40,7 +40,7 @@ const Footer = () => {
                 <i className="bi bi-envelope-fill"></i> swoyambhussm@gmail.com
               </li>
               <li>
-                <i className="bi bi-telephone-fill"></i> 977-9851233828
+                <i className="bi bi-telephone-fill"></i> 977-9880022207
               </li>
             </ul>
           </div>

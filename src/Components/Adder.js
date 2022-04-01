@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { increment, decrement } from "../redux/actions/adder";
@@ -39,16 +39,16 @@ const Adder = (props) => {
   return (
     <div className="AdderCart">
       <button onClick={decreaseOrder}>
-        <GrSubtractCircle />{" "}
+        <GrSubtractCircle />
       </button>
       <input
-        className="text-center"
+        className="text-center bg-white text-primary"
         type={"number"}
         value={orderValue[id]}
         disabled
       />
       <button onClick={increaseOrder}>
-        <GrAddCircle />{" "}
+        <GrAddCircle />
       </button>
     </div>
   );

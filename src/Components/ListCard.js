@@ -11,6 +11,7 @@ const ListCard = (props) => {
   const orderValue = useSelector((state) => state.order);
   const cart = useSelector((state) => state.cart.cart);
   const filterData = useSelector((state) => state.filter);
+  const darkMode = useSelector((state) => state.dark.darkMode);
 
   const dispatch = useDispatch();
 
@@ -78,9 +79,14 @@ const ListCard = (props) => {
           {arr.length === 0 ? <h1>Filter Again ....</h1> : null}
           {arr.map((item) => {
             return (
-              <div className="col-lg-3 Body-list-card" key={item.id}>
+              <div className="col-lg-3 Body-list-card " key={item.id}>
                 <div className="ListCard" id={item.id}>
-                  <div className="ListCard-items">
+                  <div
+                    className={`ListCard-items p-3 bg-${
+                      darkMode ? "secondary" : "light"
+                    }`}
+                    style={{ fontSize: "1rem" }}
+                  >
                     <Link to={`/product/${item.id}`}>
                       <div>
                         <img
@@ -99,10 +105,10 @@ const ListCard = (props) => {
                     </div>
                     <div>
                       <div className="row justify-content-between">
-                        <div className="col">
-                          <h4>{`Rs. ${toRs(item.price)}`}</h4>
+                        <div className="col-auto">
+                          <h5>{`Rs. ${toRs(item.price)}`}</h5>
                         </div>
-                        <div className="col">
+                        <div className="col-auto">
                           <h5
                             className={`ListCard-${
                               item.stock < 5

@@ -208,7 +208,9 @@ const EcomNavbar = () => {
               ></button>
             </div>
             <div className="modal-body">
-              <Cart />
+              <div className="Cart-slider">
+                <Cart />
+              </div>
             </div>
             <div className="modal-footer">
               <div className="text-end">

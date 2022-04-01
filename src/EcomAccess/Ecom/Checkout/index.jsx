@@ -38,13 +38,18 @@ const Checkout = () => {
       <div className={darkMode ? "dark-mode Checkout" : "light-mode Checkout"}>
         {formSubmit ? (
           <>
+            <div className="bg-info">
+              <h4 className="text-danger text-center">
+                Add 4+ item to cart to see custom scrool.
+              </h4>
+            </div>
             <h1 className="text-success text-center pt-4">Checkout</h1>
             <div className="container">
               <div className="row  mt-4 justify-content-between">
                 <div className={`Checkout-Form p-4 bg-${b} col-6 text-${a}`}>
                   <h4>Your Details</h4>
                   <div className="mt-4">
-                    <CheckoutForm />
+                    <CheckoutForm setFormSubmit={setFormSubmit} />
                   </div>
                 </div>
                 <div className={`Checkout-Order p-4 bg-${b} col-5 text-${a}`}>

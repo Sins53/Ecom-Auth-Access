@@ -112,4 +112,32 @@ input:checked + .slider:before {
   padding: 10px;
 }
 
+.Cart{
+  &-slider{
+    height: 17rem;
+    overflow: auto;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      width: 1em;
+      height: 1em;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgb(223, 32, 32);
+      border-radius: 100vw;
+      // margin-block: 0.5em;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgb(97, 0, 0);
+      border: 0.25em solid rgb(222, 32, 32);
+      border-radius: 100vw;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(52, 0, 0);
+    }
+  }
+}
+
 

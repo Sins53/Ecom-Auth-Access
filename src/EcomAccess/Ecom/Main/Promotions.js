@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import pic from "../../../assets/images/profile-pic.jpg";
+import ListCard from "../../../Components/ListCard";
 
+const mlist = ["", "laptop", "mobile", "watch", "keyboard", "headseat"];
 const Promotions = (props) => {
+  const productList = useSelector((state) => state.product.products);
+
   const { darkMode } = props;
   var a = "light";
   if (darkMode) {
@@ -9,72 +14,29 @@ const Promotions = (props) => {
   } else {
     a = "light";
   }
+
+  var arrReduced = [];
+  if (productList !== []) {
+    var arr = [];
+    var i = 1;
+    var q = productList;
+    q.forEach((item) => {
+      if (item.category[1] === mlist[i]) {
+        arr.push(item);
+        i++;
+      }
+    });
+    arr.pop();
+    console.log(arr);
+    arrReduced = arr;
+  }
   return (
-    <div className="container">
-      <h2 className="text-primary">Active Promotions</h2>
-      <div className="mt-5 row">
-        <div className="col-3">
-          <div className={`card p-3 bg-${a}`}>
-            <img src={pic} alt="alt" width="100%" height="300" />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="col-3">
-          <div className={`card p-3 bg-${a}`}>
-            <img src={pic} alt="alt" width="100%" height="300" />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="col-3">
-          <div className={`card p-3 bg-${a}`}>
-            <img src={pic} alt="alt" width="100%" height="300" />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="col-3">
-          <div className={`card p-3 bg-${a}`}>
-            <img src={pic} alt="alt" width="100%" height="300" />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
+    <>
+      <div className="container">
+        <h3>Promotions</h3>
+        <ListCard arrReduced={arrReduced} />{" "}
       </div>
-    </div>
+    </>
   );
 };
 
