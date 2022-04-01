@@ -1,21 +1,21 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Adder from "./Adder";
-// import { addCart } from "../redux/actions/cart";
+import { addCart } from "../redux/actions/cart";
 import { Link } from "react-router-dom";
 
 const ListCard = (props) => {
   const { arrReduced } = props;
 
   const productList = useSelector((state) => state.product.products);
-  // const orderValue = useSelector((state) => state.order);
-  // const cart = useSelector((state) => state.cart.cart);
+  const orderValue = useSelector((state) => state.order);
+  const cart = useSelector((state) => state.cart.cart);
   const filterData = useSelector((state) => state.filter);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const mlist = ["", "laptop", "mobile", "watch", "keyboard", "headseat"];
-  // var addedToCart;
+  var addedToCart;
 
   const toRs = (price) => {
     var rs = price;
@@ -29,15 +29,13 @@ const ListCard = (props) => {
   var arr = productList.filter(checkFilter);
 
   function checkFilter(item) {
-    if (filterData.min) {
-      var a = toRs(item.price);
-      if (filterData.min <= a && a <= filterData.max) {
-        if (filterData.category === 0) {
+    var a = toRs(item.price);
+    if (filterData.min <= a && a <= filterData.max) {
+      if (filterData.category === 0) {
+        return item;
+      } else {
+        if (mlist[filterData.category] === item.category[1]) {
           return item;
-        } else {
-          if (mlist[filterData.category] === item.category[1]) {
-            return item;
-          }
         }
       }
     }
@@ -57,6 +55,20 @@ const ListCard = (props) => {
     var year = date.getFullYear();
     var result = day + month + year;
     return result;
+  };
+
+  const updateCart = (item) => {
+    Object.assign(item, { r: toRs(item.price), ordered: orderValue[item.id] });
+    var arr = [];
+    cart.forEach((citem) => {
+      if (item.id !== citem.id) {
+        arr.push(citem);
+      }
+    });
+    addedToCart = [item, ...arr];
+    var unique = [...new Set(addedToCart)];
+    console.log(unique);
+    dispatch(addCart(unique));
   };
 
   return (
@@ -111,7 +123,7 @@ const ListCard = (props) => {
                     <div>
                       <button
                         className="ListCard-btn"
-                        // onClick={() => updateCart(item)}
+                        onClick={() => updateCart(item)}
                       >
                         Add to Cart
                       </button>

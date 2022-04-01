@@ -11,10 +11,10 @@
   @include rfs(1rem); //16px
 }
 @mixin h5 {
-  @include rfs(0.875rem); //
+  @include rfs(0.75rem); //
 }
 @mixin h6 {
-  @include rfs(0.75rem); //12px
+  @include rfs(0.5rem); //8px
 }
 
 h1,

@@ -10,7 +10,6 @@ const Body = () => {
   useEffect(() => {
     dispatch(fetchProduct());
     console.log("inside use effect body");
-    // dispatch(initializeValues(20))
   });
 
   return (

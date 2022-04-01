@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import adderReducer from "./reducers/adderReducer";
+import cartReducer from "./reducers/cartReducer";
 import filterReducer from "./reducers/filterReducer";
 import productReducer from "./reducers/productReducer";
 import ToogleThemeReducer from "./reducers/ToogleThemeReducer";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   product: productReducer,
   order: adderReducer,
   filter: filterReducer,
+  cart: cartReducer,
 });
 
 export default rootReducer;

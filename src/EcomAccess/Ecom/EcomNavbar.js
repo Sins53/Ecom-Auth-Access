@@ -5,15 +5,41 @@ import { Link } from "react-router-dom";
 import { toogleTheme } from "../../redux/actions/toggleTheme";
 import { MdPhoneIphone } from "react-icons/md";
 import { BsShop } from "react-icons/bs";
+import { FaShoppingCart } from "react-icons/fa";
+import { addCart } from "../../redux/actions/cart";
+import { initializeValues } from "../../redux/actions/adder";
+import Cart from "../../Components/Cart";
 
 var a = "light";
+
 const EcomNavbar = () => {
   const userName = localStorage.getItem("name");
   const [refresh, setRefresh] = useState(false);
 
+  const cartCount = useSelector((state) => state.cart.cart.length);
+  const cart = useSelector((state) => state.cart.cart);
   const darkMode = useSelector((state) => state.dark.darkMode);
 
   const dispatch = useDispatch();
+
+  const resetCart = () => {
+    dispatch(addCart([]));
+    dispatch(initializeValues(20));
+  };
+  const displayMessage = () => {
+    alert("select items first...");
+  };
+
+  if (cart !== []) {
+    var total = 0;
+    var uniqueItems = 0;
+    if (cart !== []) {
+      cart.forEach((item) => {
+        uniqueItems += item.ordered;
+        total = total + item.r * item.ordered;
+      });
+    }
+  }
 
   if (darkMode === true) {
     a = "dark";
@@ -64,7 +90,12 @@ const EcomNavbar = () => {
                   </i>
                   01-4890550
                 </Nav.Link>
-                <Nav.Link>Cart</Nav.Link>
+                <Nav.Link data-bs-toggle="modal" data-bs-target="#cartModal">
+                  <i>
+                    <FaShoppingCart />
+                  </i>
+                  {` Cart ${cartCount}`}
+                </Nav.Link>
                 {userName ? (
                   <NavDropdown title={userName} id="collasible-nav-dropdown">
                     <NavDropdown.Item>
@@ -142,6 +173,69 @@ const EcomNavbar = () => {
           <Outlet />
         </div>
       </div> */}
+
+      <div
+        className="modal fade"
+        id="cartModal"
+        tabindex="-1"
+        aria-labelledby="cartModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <div>
+                <h4 className="modal-title" id="cartModalLabel">
+                  Unique Items : {cartCount}{" "}
+                </h4>
+                <h4>Total items : {uniqueItems} </h4>
+              </div>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <Cart />
+            </div>
+            <div className="modal-footer">
+              <div className="text-end">
+                <h2>Total Amount : {total} </h2>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={resetCart}
+                >
+                  Reset
+                </button>
+                <span> </span>
+                {uniqueItems >= 1 ? (
+                  <Link to="/checkout">
+                    <button
+                      type="button"
+                      className="btn btn-success"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      Checkout
+                    </button>
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={displayMessage}
+                  >
+                    Checkout
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
