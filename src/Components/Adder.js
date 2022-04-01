@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { increment, decrement } from "..//redux/actions/adder";
+import { increment, decrement } from "../redux/actions/adder";
 import { GrSubtractCircle, GrAddCircle } from "react-icons/gr";
-// import {
-//   cartAdderDecrease,
-//   cartAdderIncrease,
-//   removeItem,
-// } from "../redux/actions/cart";
+import {
+  cartAdderDecrease,
+  cartAdderIncrease,
+  removeItem,
+} from "../redux/actions/cart";
 
 const Adder = (props) => {
   const { id, stock, ordered } = props;
@@ -19,11 +19,11 @@ const Adder = (props) => {
     if (orderValue[id] > 1) {
       dispatch(decrement(id));
       if (ordered) {
-        // dispatch(cartAdderDecrease(id));
+        dispatch(cartAdderDecrease(id));
       }
     } else {
       if (ordered) {
-        // dispatch(removeItem(id));
+        dispatch(removeItem(id));
       }
     }
   };
@@ -31,7 +31,7 @@ const Adder = (props) => {
     if (orderValue[id] < stock) {
       dispatch(increment(id));
       if (ordered) {
-        // dispatch(cartAdderIncrease(id));
+        dispatch(cartAdderIncrease(id));
       }
     }
   };

@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import LoginSignup from "./Components/LoginSignup";
 import RequireAuth from "./Components/RequireAuth";
 import EcomAccess from "./EcomAccess";
+import Checkout from "./EcomAccess/Ecom/Checkout";
+import ProductPage from "./EcomAccess/Ecom/PrductPage";
 import Store from "./EcomAccess/Ecom/Store";
 import Home from "./EcomAccess/Home";
 import Admin from "./Pages/Admin";
@@ -18,6 +20,8 @@ function App() {
     { link: "/login/", name: LoginSignup },
     { link: "/home/", name: Home },
     { link: "/store/", name: Store },
+    { link: "/product/:id", name: ProductPage },
+    { link: "/checkout/", name: Checkout },
     { link: "/unauthorized/", name: UnautorizedPage },
     { link: "*", name: MissingPage },
   ];

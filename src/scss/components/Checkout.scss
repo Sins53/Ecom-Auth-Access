@@ -1,0 +1,64 @@
+// .Checkout {
+//   height: 100vh;
+
+//   &-detail{
+//     // background-color: blue;
+//   }
+//   &-cart{ 
+//     &-btn{
+//       color: green;
+//     &:hover{
+//       color: red;
+//     }
+//     }
+//     &-end{
+//       border-top: 2px solid black;
+//       color: green;
+//       padding-top: 2rem;
+//     }
+//   }
+//   &-form {
+//     label {
+//       display: block;
+//       font-size: 1.25rem;
+//       font-weight: 400;
+//       color: rgb(33, 0, 95);
+//     }
+//       input {
+//         margin: 1rem;
+//         border: 2px solid rgb(33, 0, 95);
+//         border-radius: 24px;
+//         width: 12rem;
+//         &:focus{
+//           width: 16rem;
+//           // border-color: green;
+//         }
+//       }
+//     button {
+//       margin-top: 3rem;
+//       background-color: yellow;
+//       width: 100%;
+//     }  
+//   }
+// }
+
+.Checkout{
+  min-height: 100vh;
+  &-Form{
+    background-color: red;
+  }
+  &-Order{
+    background-color: green;
+    &-start{
+      border-bottom: 2px solid black;
+      // padding-top: 2rem;
+    }
+    &-end{
+      border-top: 2px solid black;
+      padding-top: 2rem;
+      border-bottom: 2px solid black;
+    }
+  }
+}
+
+ 

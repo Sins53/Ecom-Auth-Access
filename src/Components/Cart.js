@@ -43,16 +43,16 @@ const Cart = () => {
               <div className="col-auto">
                 <img className="Cart-img" src={imgUrl + item.image} alt="" />
               </div>
-              <div className="col-4">
+              <div className="col-auto">
                 <h6>{item.name}</h6>
                 <h6>{"Rs. " + item.r * item.ordered}</h6>
               </div>
-              <div className="col-4 ml-auto text-end">
+              <div className="col-auto ml-auto text-end">
                 <h6 className={`ListCard-${stockName}`}>
                   {"Stock remaining: " + item.stock}
                 </h6>
                 <Adder id={item.id} stock={item.stock} ordered={item.ordered} />
-                <h6>Unit Price: {`Rs. ${item.r}`}</h6>
+                <>Per Rs: {item.r}</>
               </div>
             </div>
           </>

@@ -206,6 +206,8 @@ const EcomNavbar = () => {
                 <button
                   type="button"
                   className="btn btn-danger"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
                   onClick={resetCart}
                 >
                   Reset
