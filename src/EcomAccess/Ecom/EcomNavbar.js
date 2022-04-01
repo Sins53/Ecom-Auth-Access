@@ -8,6 +8,7 @@ import { BsShop } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { addCart } from "../../redux/actions/cart";
 import { initializeValues } from "../../redux/actions/adder";
+import { GrUserManager } from "react-icons/gr";
 import Cart from "../../Components/Cart";
 
 var a = "light";
@@ -75,7 +76,10 @@ const EcomNavbar = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link>
-                  <Link style={{ textDecoration: "none" }} to={"/store"}>
+                  <Link
+                    style={{ textDecoration: "none", color: "green" }}
+                    to={"/store"}
+                  >
                     <i>
                       <BsShop />
                     </i>
@@ -83,8 +87,21 @@ const EcomNavbar = () => {
                   </Link>
                 </Nav.Link>
               </Nav>
-              <Nav>
+              <Nav className="me-auto">
                 <Nav.Link>
+                  <Link
+                    style={{ textDecoration: "none", color: "red" }}
+                    to={"/productcreator"}
+                  >
+                    <i>
+                      <GrUserManager />
+                    </i>
+                    {"  By Product Creators"}
+                  </Link>
+                </Nav.Link>
+              </Nav>
+              <Nav>
+                <Nav.Link style={{ color: "orange" }}>
                   <i>
                     <MdPhoneIphone />
                   </i>
@@ -167,13 +184,6 @@ const EcomNavbar = () => {
         </Navbar>
       </div>
 
-      {/* <div className={darkMode ? "dark-mode" : "light-mode"}>
-        <div>
-          <h1>Cool its {darkMode ? "Dark" : "Light"} Mode </h1>
-          <Outlet />
-        </div>
-      </div> */}
-
       <div
         className="modal fade"
         id="cartModal"
@@ -186,7 +196,7 @@ const EcomNavbar = () => {
             <div className="modal-header">
               <div>
                 <h4 className="modal-title" id="cartModalLabel">
-                  Unique Items : {cartCount}{" "}
+                  Unique Items : {cartCount}
                 </h4>
                 <h4>Total items : {uniqueItems} </h4>
               </div>

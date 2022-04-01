@@ -19,13 +19,15 @@ span {
 .dark-mode {
   background-color: #1a1919;
   color: #999;
-  transition: background-color 0.25s ease-in-out;
+  min-height: 100vh;
 }
 
 .light-mode {
+  transition: background-color 0.25s ease-in-out;
   background-color: #fff;
   color: #333;
   transition: background-color 0.25s ease-in-out;
+  min-height: 100vh;
 }
 
 .containerNav {
@@ -109,3 +111,5 @@ input:checked + .slider:before {
 .switch-checkbox {
   padding: 10px;
 }
+
+

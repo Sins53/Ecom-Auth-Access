@@ -6,10 +6,12 @@ import Checkout from "./EcomAccess/Ecom/Checkout";
 import ProductPage from "./EcomAccess/Ecom/PrductPage";
 import Store from "./EcomAccess/Ecom/Store";
 import Home from "./EcomAccess/Home";
+import ProductCreators from "./EcomAccess/ProductCreators";
 import Admin from "./Pages/Admin";
 import Role from "./Pages/Admin/Role";
 import User from "./Pages/Admin/User";
 import UserRoleMap from "./Pages/Admin/UserRoleMap";
+import Guide from "./Pages/Guide";
 import MissingPage from "./Pages/MissingPage";
 import ProductCreator from "./Pages/ProductCreator";
 import UnautorizedPage from "./Pages/UnautorizedPage";
@@ -21,8 +23,10 @@ function App() {
     { link: "/home/", name: Home },
     { link: "/store/", name: Store },
     { link: "/product/:id", name: ProductPage },
+    { link: "/productcreator/", name: ProductCreators },
     { link: "/checkout/", name: Checkout },
     { link: "/unauthorized/", name: UnautorizedPage },
+    { link: "/guide/", name: Guide },
     { link: "*", name: MissingPage },
   ];
   // const outletRoutes = [

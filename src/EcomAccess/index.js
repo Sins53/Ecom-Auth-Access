@@ -55,16 +55,22 @@ const EcomAccess = () => {
             <h2 className="text-success">Navigating Options</h2>
           </div>
           <br />
-          <Link to="/home/">
+          <Link style={{ textDecoration: "none" }} to="/home/">
             <h3>Go to the Home page</h3>
           </Link>
           <br />
-          <Link to="/creator/">
+          <Link style={{ textDecoration: "none" }} to="/creator/">
             <h3>Go to the Creator page</h3>
           </Link>
           <br />
-          <Link to="/admin/">
+          <Link style={{ textDecoration: "none" }} to="/admin/">
             <h3>Go to the Admin page</h3>
+          </Link>
+          <div className="mt-4">
+            <h2 className="text-success text-center">User guide</h2>
+          </div>
+          <Link style={{ textDecoration: "none" }} to="/guide/">
+            <h3>How to Use</h3>
           </Link>
         </div>
       </section>
