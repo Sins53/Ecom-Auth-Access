@@ -2,15 +2,18 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilterData, setFilterData } from "../../../redux/actions/filter";
 import { FaFilter } from "react-icons/fa";
+import Select from "react-select";
 
 const FilterModal = () => {
   const [displayModal, setDisplayModal] = useState("none");
+  const [category, setCategory] = useState([]);
+
   const productList = useSelector((state) => state.product.products);
 
   const modal = useRef(null);
   const min = useRef(null);
   const max = useRef(null);
-  const category = useRef(null);
+  // const category = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -30,15 +33,31 @@ const FilterModal = () => {
   const setFilter = () => {
     var fmin = min.current.value;
     var fmax = max.current.value;
-    var fc = category.current.value;
+    var fc = category.value;
+    if (category.value === undefined) {
+      // alert("triggered");
+      fc = 0;
+    }
     dispatch(setFilterData(fmin, fmax, fc));
+    console.log(fmin, fmax, "----", fc);
   };
 
   const resetFilter = () => {
     dispatch(resetFilterData());
     min.current.value = "";
     max.current.value = "";
-    category.current.value = 0;
+  };
+
+  var i = 0;
+  var options = [{ value: i, label: "Select All" }];
+  const screens = unique.forEach((item) => {
+    i++;
+    options.push({ value: i, label: item });
+  });
+
+  const sendFilter = (value) => {
+    console.log(typeof value);
+    dispatch(setFilterData(0, value, 0));
   };
 
   return (
@@ -70,30 +89,44 @@ const FilterModal = () => {
             ></button>
           </div>
           <div className="modal-body">
-            <form>
-              <label>Price</label>
-              <div className="row">
-                <div className="col">
-                  <input ref={min} type="number" placeholder="Min" />
-                </div>
-                <div className="col">
-                  <input ref={max} type="number" placeholder="Max" />
-                </div>
+            <div className="mt-1">
+              <h4>New Arrivals</h4>
+              <h4>Price</h4>
+              <ul>
+                <li onClick={() => sendFilter(25000)}>Under 25K</li>
+                <li onClick={() => sendFilter(75000)}>Under 75K</li>
+                <li onClick={() => sendFilter(150000)}>Under 150K</li>
+                <li onClick={() => sendFilter(200000)}>Under 200K</li>
+                <li onClick={() => sendFilter(300000)}>Under 300K</li>
+              </ul>
+              <div className="text-center">
+                <label>Min</label>
+                <input
+                  ref={min}
+                  type="text"
+                  style={{
+                    width: "6rem",
+                    border: "2px solid green",
+                    borderRadius: "9px",
+                  }}
+                  className="mr-3 ml-3"
+                />
+                <label> -</label>
+                <input
+                  className="ml-3 mr-3"
+                  ref={max}
+                  type="text"
+                  style={{
+                    width: "6rem",
+                    border: "2px solid green",
+                    borderRadius: "9px",
+                  }}
+                />
+                <label>Max</label>
               </div>
-              <label> Category</label>
-              <div>
-                <select ref={category} name="Choose" placeholder="Choose ">
-                  <option value={0}>Display All</option>
-                  {unique.map((item) => {
-                    return (
-                      <option value={unique.indexOf(item) + 1} key={item}>
-                        {item}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-            </form>
+              <h4 className="mt-3 mb-3">Category</h4>
+              <Select options={options} onChange={setCategory} isSearchable />
+            </div>
           </div>
           <div className="modal-footer">
             <button
