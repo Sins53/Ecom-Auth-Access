@@ -7,6 +7,7 @@ import ProductPage from "./EcomAccess/Ecom/PrductPage";
 import Store from "./EcomAccess/Ecom/Store";
 import Home from "./EcomAccess/Home";
 import ProductCreators from "./EcomAccess/ProductCreators";
+import SingleProduct from "./EcomAccess/ProductCreators/SingleProduct";
 import Admin from "./Pages/Admin";
 import Role from "./Pages/Admin/Role";
 import User from "./Pages/Admin/User";
@@ -24,6 +25,7 @@ function App() {
     { link: "/store/", name: Store },
     { link: "/product/:id", name: ProductPage },
     { link: "/productcreator/", name: ProductCreators },
+    { link: "/productcreator/:id", name: SingleProduct },
     { link: "/checkout/", name: Checkout },
     { link: "/unauthorized/", name: UnautorizedPage },
     { link: "/guide/", name: Guide },

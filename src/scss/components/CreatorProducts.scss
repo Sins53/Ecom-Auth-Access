@@ -66,6 +66,34 @@
           }
       }
       }
+      &-btn{
+          color: white;
+          border: 0;
+          cursor: pointer;
+          padding: .5em 1.25em;
+          background: linear-gradient(90deg, #7cee52, rgb(128, 6, 0), #eee952);
+          background-size: 300%;
+          background-position: left;
+          transition: background-position 350ms;       
+        &:hover {
+          background-position: right;
+        }
+      }
     }
   }
+}
+
+.fun {
+  color: white;
+  border: 0;
+  cursor: pointer;
+  padding: .5em 1.25em;
+  background: linear-gradient(90deg, #ee6352, purple, #ee6352);
+  background-size: 300%;
+  background-position: left;
+  transition: background-position 350ms;
+}
+
+.fun:hover {
+  background-position: right;
 }
