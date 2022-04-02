@@ -80,10 +80,6 @@ const FilterModal = () => {
                   <input ref={max} type="number" placeholder="Max" />
                 </div>
               </div>
-              <label> Date</label>
-              <div>
-                <input type="date" />
-              </div>
               <label> Category</label>
               <div>
                 <select ref={category} name="Choose" placeholder="Choose ">

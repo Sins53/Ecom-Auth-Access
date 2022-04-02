@@ -37,7 +37,11 @@ const EcomAccess = () => {
               <>
                 <p className="text-success">You are logged in as {name}</p>
                 <div className="text-end">
-                  <button className="btn mb-3 fun" onClick={logout}>
+                  <button
+                    className="btn mb-3 fun"
+                    data-bs-toggle="modal"
+                    data-bs-target="#LogoutModal"
+                  >
                     Logout
                   </button>
                 </div>
@@ -74,6 +78,52 @@ const EcomAccess = () => {
           </Link>
         </div>
       </section>
+
+      <div
+        className="modal fade LogoutModal"
+        id="LogoutModal"
+        tabindex="-1"
+        aria-labelledby="LogoutModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <div className="DelModal-header">
+                <h3>Logout Modal</h3>
+              </div>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body text-center">
+              <h3>Are you sure you want to Logout? </h3>
+            </div>
+            <div className="modal-footer">
+              <div className="text-end LogoutModal-footer">
+                <button
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  Cancel
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={logout}
+                  data-bs-dismiss="modal"
+                  style={{ marginLeft: "2rem" }}
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

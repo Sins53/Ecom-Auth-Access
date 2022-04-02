@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useNote from "../../../CustomHooks/useNote";
 import EcomNavbar from "../EcomNavbar";
 
 import CheckoutForm from "./CheckoutForm";
 import CheckoutOrders from "./CheckoutOrders";
 import CheckoutSuccess from "./CheckoutSuccess";
+import ConfirmCheckout from "./ConfirmCheckout";
 
 var a = "dark";
 var b = "light";
@@ -15,6 +17,9 @@ const Checkout = () => {
   const cart = useSelector((state) => state.cart.cart);
   const darkMode = useSelector((state) => state.dark.darkMode);
   const navigate = useNavigate();
+  const { displayNotice } = useNote(
+    "Add 4+ item to cart to see custom scrool."
+  );
 
   if (darkMode) {
     a = "light";
@@ -38,11 +43,7 @@ const Checkout = () => {
       <div className={darkMode ? "dark-mode Checkout" : "light-mode Checkout"}>
         {formSubmit ? (
           <>
-            <div className="bg-info">
-              <h4 className="text-danger text-center">
-                Add 4+ item to cart to see custom scrool.
-              </h4>
-            </div>
+            {displayNotice}
             <h1 className="text-success text-center pt-4">Checkout</h1>
             <div className="container">
               <div className="row  mt-4 justify-content-between">
@@ -79,6 +80,7 @@ const Checkout = () => {
         )}
       </div>
     </>
+    // <ConfirmCheckout />
   );
 };
 
