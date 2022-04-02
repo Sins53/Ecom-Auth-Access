@@ -1,0 +1,71 @@
+.Creator{
+  &-Products{
+    // background-color: red;
+    .ListCard{
+      padding: 1rem;
+      background-image: linear-gradient(135deg, #ee6352, purple, #ee6352);
+      &-title{
+        margin-top: 1rem;
+        overflow: hidden;
+        max-height: 2rem;
+        h4{
+          
+            margin: 0 0 .5em;
+            font-style: bold;
+            color: #5255ee;
+            margin: 0;           
+            background-image: linear-gradient(90deg, #5252ee, rgb(55, 128, 0), #52eee6);
+            background-clip: text;
+            color: transparent;
+            background-size: 300%;
+            transition: background-position 1s;
+              &:hover {
+                background-position: right; 
+            }
+        }
+      }
+      &-description{
+        margin-top: 1rem;
+        overflow: auto;
+        height: 5rem;
+
+        &::-webkit-scrollbar {
+          width: 1em;
+          height: 1em;
+        }
+        
+        &::-webkit-scrollbar-track {
+          background: rgb(32, 48, 223);
+          border-radius: 100vw;
+          // margin-block: 0.5em;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+          background: rgb(0, 8, 97);
+          border: 0.25em solid rgb(219, 32, 222);
+          border-radius: 100vw;
+        }
+        
+        &::-webkit-scrollbar-thumb:hover {
+          background: rgb(2, 0, 52);
+        }
+
+        h5{
+          
+          margin: 0 0 .5em;
+          font-style: bold;
+          color: #5255ee;
+          margin: 0;           
+          background-image: linear-gradient(90deg, #000000, rgb(55, 128, 0), #52eee6);
+          background-clip: text;
+          color: transparent;
+          background-size: 300%;
+          transition: background-position 1s;
+            &:hover {
+              background-position: right; 
+          }
+      }
+      }
+    }
+  }
+}

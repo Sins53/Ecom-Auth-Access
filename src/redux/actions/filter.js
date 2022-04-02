@@ -6,7 +6,7 @@ export const setFilterData = (min, max, category) => {
     c = null;
   min ? (a = min) : (a = 1);
   max ? (b = max) : (b = 1000000000);
-  c = Number(category);
+  category ? (c = Number(category)) : (c = 0);
   return {
     type: FILTER_DATA,
     payload: {
