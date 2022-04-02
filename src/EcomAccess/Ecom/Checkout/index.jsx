@@ -7,11 +7,11 @@ import EcomNavbar from "../EcomNavbar";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutOrders from "./CheckoutOrders";
 import CheckoutSuccess from "./CheckoutSuccess";
-import ConfirmCheckout from "./ConfirmCheckout";
 
 var a = "dark";
 var b = "light";
 const Checkout = () => {
+  const userName = localStorage.getItem("name");
   const [formSubmit, setFormSubmit] = useState(true);
 
   const cart = useSelector((state) => state.cart.cart);
@@ -36,6 +36,13 @@ const Checkout = () => {
       navigate("/store");
     }
   }, [cart]);
+
+  useEffect(() => {
+    if (!userName) {
+      alert("Oh No! You Cant Checkout Without logging In.");
+      navigate(-1);
+    }
+  }, []);
 
   return (
     <>
