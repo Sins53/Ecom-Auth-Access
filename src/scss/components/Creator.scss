@@ -93,20 +93,3 @@
   }
 }
 
-.UpdateModal {
-  &-header {
-    color: green;
-  }
-  &-body {
-    color: rgb(2, 2, 54);
-    input {
-      border: 2px solid green;
-      border-radius: 10px;
-    }
-  }
-  &-footer {
-    button {
-      margin-left: 2rem;
-    }
-  }
-}

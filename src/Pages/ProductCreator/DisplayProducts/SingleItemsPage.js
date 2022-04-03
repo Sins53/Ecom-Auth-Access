@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import SingleCreatorProductPage from "../../../Components/CreatorProduct/SingleCreatorProductPage";
@@ -15,7 +15,6 @@ const SingleItemsPage = () => {
   const { displayNotice } = useNote("Minimize Sidenav for better View.");
 
   const [data, setData] = useState([]);
-  const [displayModal, setDisplayModal] = useState("none");
 
   const pname = useRef(null);
   const pdescription = useRef(null);
@@ -24,15 +23,11 @@ const SingleItemsPage = () => {
 
   const url = `product/${id}`;
 
-  const display = () => {
-    setDisplayModal("block");
+  const setInitials = () => {
     pname.current.value = data[0].name;
     pdescription.current.value = data[0].description;
     pimg.current.value = data[0].image;
     pqty.current.value = data[0].quantity;
-  };
-  const close = () => {
-    setDisplayModal("none");
   };
 
   const updateProduct = () => {
@@ -45,7 +40,6 @@ const SingleItemsPage = () => {
 
     commonApi(url, "PUT", { name, description, image, quantity });
     dispatch(fetchCreatorProduct());
-    close();
   };
 
   const deleteProduct = () => {
@@ -60,7 +54,12 @@ const SingleItemsPage = () => {
       <div className="Creator-Body">
         <div className="container mt-5">
           <div className="text-end">
-            <button className="mr-3 btn btn-warning" onClick={display}>
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#CreatorUpdateModal"
+              className="mr-3 btn btn-warning"
+              onClick={setInitials}
+            >
               Edit
             </button>
             <button
@@ -75,79 +74,6 @@ const SingleItemsPage = () => {
           <div className="text-white mt-3">
             <SingleCreatorProductPage setData={setData} />
           </div>
-        </div>
-      </div>
-
-      <div
-        className="mt-5"
-        style={{
-          display: displayModal,
-          position: "absolute",
-          top: "20%",
-          left: "20%",
-          zIndex: "10",
-        }}
-      >
-        <form>
-          <div className="container UpdateModal-body text-start mt-5 bg-info">
-            <div>
-              <div className="row mt-3">
-                <div className="col-4">
-                  <label>Name</label>
-                </div>
-                <div className="col-8">
-                  <input ref={pname} type="text" placeholder="Enter Name" />
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="row mt-4">
-                <div className="col-4">
-                  <label>Description</label>
-                </div>
-                <div className="col-8">
-                  <input
-                    ref={pdescription}
-                    type="text"
-                    placeholder="Enter Description"
-                  />
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="row mt-4">
-                <div className="col-4">
-                  <label>Image Link</label>
-                </div>
-                <div className="col-8">
-                  <input ref={pimg} type="text" placeholder="Enter Name" />
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="row mt-4">
-                <div className="col-4">
-                  <label>Quantity</label>
-                </div>
-                <div className="col-8">
-                  <input
-                    ref={pqty}
-                    type="number"
-                    placeholder="Enter Quantity"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-
-        <div className="mt-2 ProductUpdateForm">
-          <button className="btn btn-primary mr-4" onClick={updateProduct}>
-            Update
-          </button>
-          <button className="btn btn-danger" onClick={close}>
-            Close
-          </button>
         </div>
       </div>
 
@@ -190,6 +116,110 @@ const SingleItemsPage = () => {
                   style={{ marginLeft: "2rem" }}
                 >
                   Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="modal fade CreatorUpdateModal"
+        id="CreatorUpdateModal"
+        tabindex="-1"
+        aria-labelledby="CreatorUpdateModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <div className="CreatorUpdateModal-header">
+                <h3>Add Products</h3>
+              </div>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="container CreatorUpdateModal-body text-start">
+                  <div>
+                    <div className="row mt-3">
+                      <div className="col-4">
+                        <label>Name</label>
+                      </div>
+                      <div className="col-8">
+                        <input
+                          ref={pname}
+                          type="text"
+                          placeholder="Enter Name"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="row mt-4">
+                      <div className="col-4">
+                        <label>Description</label>
+                      </div>
+                      <div className="col-8">
+                        <input
+                          ref={pdescription}
+                          type="text"
+                          placeholder="Enter Description"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="row mt-3">
+                      <div className="col-4">
+                        <label>Image Link</label>
+                      </div>
+                      <div className="col-8">
+                        <input
+                          ref={pimg}
+                          type="text"
+                          placeholder="Enter Name"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="row mt-4">
+                      <div className="col-4">
+                        <label>Quantity</label>
+                      </div>
+                      <div className="col-8">
+                        <input
+                          ref={pqty}
+                          type="number"
+                          placeholder="Enter Quantity"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <div className="text-end CreatorUpdateModal-footer">
+                <button
+                  className="btn btn-danger mr-4"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  Close
+                </button>
+                <button
+                  className="btn btn-success"
+                  data-bs-dismiss="modal"
+                  onClick={updateProduct}
+                >
+                  Update
                 </button>
               </div>
             </div>
