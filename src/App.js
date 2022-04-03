@@ -66,7 +66,10 @@ function App() {
 
         {/* for Product creators */}
         <Route element={<RequireAuth allowedRoles={"creator"} />}>
-          <Route path="/creator/" element={<ProductCreator />} />
+          <Route path="/creator/" element={<ProductCreator />}>
+            <Route path="/creator/roles" element={<Role />} />
+            <Route path="/creator/user" element={<User />} />
+          </Route>
         </Route>
       </Routes>
     </>
