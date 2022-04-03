@@ -1,11 +1,25 @@
 import React from "react";
-import Headder from "./Headder";
+import { useSelector } from "react-redux";
+import AdminAddModal from "../../Components/AdminFeatures/AdminAddModal";
 
 const User = () => {
+  const isLoading = useSelector((state) => state.user.isLoading);
   return (
     <>
-      <Headder />
-      User
+      {isLoading ? (
+        <h1>Loading..... </h1>
+      ) : (
+        <>
+          <div className="container mt-5">
+            <div>
+              <h2>User Setup</h2>
+            </div>
+            <div className="text-end">
+              <AdminAddModal />
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

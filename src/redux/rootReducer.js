@@ -5,10 +5,10 @@ import creatorProductReducer from "./reducers/creatorProductReducer";
 import filterReducer from "./reducers/filterReducer";
 import productReducer from "./reducers/productReducer";
 import ToogleThemeReducer from "./reducers/ToogleThemeReducer";
-import UserReducer from "./reducers/UserReducer";
+import userReducer from "./reducers/userReducer";
 
 const rootReducer = combineReducers({
-  user: UserReducer,
+  user: userReducer,
   dark: ToogleThemeReducer,
   product: productReducer,
   order: adderReducer,

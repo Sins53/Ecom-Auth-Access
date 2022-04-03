@@ -1,25 +1,27 @@
-import { GET_ALL_USER, GET_USER } from "../constants";
+import { USER_LIST_FETCHING, USER_LIST_SUCCESS } from "../constants";
 
 const initialState = {
-  user: [],
   users: [],
+  isLoading: false,
 };
 
-const UserReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER:
+    case USER_LIST_FETCHING:
       return {
         ...state,
-        user: action.payload,
+        isLoading: true,
       };
-    case GET_ALL_USER:
+    case USER_LIST_SUCCESS:
       return {
         ...state,
+        isLoading: false,
         users: action.payload,
       };
+
     default:
       return state;
   }
 };
 
-export default UserReducer;
+export default userReducer;

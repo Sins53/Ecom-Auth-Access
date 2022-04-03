@@ -1,13 +1,7 @@
 import React from "react";
-import Headder from "./Headder";
 
 const Role = () => {
-  return (
-    <>
-      <Headder />
-      Role
-    </>
-  );
+  return <>Role</>;
 };
 
 export default Role;

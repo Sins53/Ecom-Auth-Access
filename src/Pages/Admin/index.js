@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Outlet } from "react-router-dom";
+import { fetchUsers } from "../../redux/actions/user";
 import Headder from "./Headder";
 
 const Admin = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
+
   return (
     <>
       <Headder />
-      <div className="container mt-5">
-        <h3>Notes:</h3>
+      <div>
+        <Outlet />
       </div>
     </>
   );

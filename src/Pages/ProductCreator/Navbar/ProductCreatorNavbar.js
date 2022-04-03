@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const ProductCreatorNavbar = () => {
+  const userName = localStorage.getItem("name");
   const [search, setSearch] = useState([]);
   const creatorProductList = useSelector(
     (state) => state.creatorProduct.products
@@ -50,13 +51,26 @@ const ProductCreatorNavbar = () => {
           </div>
         </div>
         <div className="ml-auto p-3">
-          <i className="fas fa-bell"></i>
-          <i className="fas fa-comment-alt mx-4"></i>
+          <i
+            className="fas fa-bell"
+            onClick={() => {
+              alert("Customers are waiting for new Arrivals..");
+            }}
+          ></i>
+          <i
+            className="fas fa-comment-alt mx-4"
+            onClick={() => {
+              alert("No New messages.");
+            }}
+          ></i>
           <img
             alt="panelImage"
             src={pic}
             style={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
           />
+        </div>
+        <div className="text-danger mr-5">
+          <h4>{userName}</h4>
         </div>
       </CDBNavbar>
     </Header>

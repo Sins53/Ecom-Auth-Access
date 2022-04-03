@@ -9,6 +9,7 @@ import Home from "./EcomAccess/Home";
 import ProductCreators from "./EcomAccess/ProductCreators";
 import SingleProduct from "./EcomAccess/ProductCreators/SingleProduct";
 import Admin from "./Pages/Admin";
+import AdminMessage from "./Pages/Admin/AdminMessage";
 import Role from "./Pages/Admin/Role";
 import User from "./Pages/Admin/User";
 import UserRoleMap from "./Pages/Admin/UserRoleMap";
@@ -61,10 +62,12 @@ function App() {
           </Route> */}
 
           {/* For admin */}
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/user" element={<User />} />
-          <Route path="/admin/roles" element={<Role />} />
-          <Route path="/admin/user/:id" element={<UserRoleMap />} />
+          <Route path="/admin/" element={<Admin />}>
+            <Route path="/admin/" element={<AdminMessage />} />
+            <Route path="/admin/user" element={<User />} />
+            <Route path="/admin/roles" element={<Role />} />
+            <Route path="/admin/user/:id" element={<UserRoleMap />} />
+          </Route>
         </Route>
 
         {/* for Product creators */}
