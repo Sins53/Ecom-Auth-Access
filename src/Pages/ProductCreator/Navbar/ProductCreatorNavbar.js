@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Header } from "./Navbar.style";
 import { CDBNavbar } from "cdbreact";
-import pic from "../../assets/images/profile-pic.jpg";
+import pic from "../../../assets/images/profile-pic.jpg";
 import Select from "react-select";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -19,11 +19,15 @@ const ProductCreatorNavbar = () => {
   });
 
   const searchItem = () => {
-    if (search.value === undefined || search.value === 0) {
-      alert("triggered");
+    if (search) {
+      if (search.value) {
+        console.log(search.value);
+        navigate(`/creator/products/${search.value}`);
+      } else {
+        navigate("/creator/products/");
+      }
     } else {
-      console.log(search.value);
-      navigate(`/productcreator/${search.value}`);
+      navigate("/creator/products/");
     }
   };
 

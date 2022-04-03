@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const CreatorListCard = () => {
+const CreatorListCard = (props) => {
   const creatorProductList = useSelector(
     (state) => state.creatorProduct.products
   );
@@ -18,7 +18,7 @@ const CreatorListCard = () => {
               <div className="col-lg-3 Body-list-card" key={item.id}>
                 <div className="ListCard" id={item.id}>
                   <div>
-                    <Link to={`/productcreator/${item.id}`}>
+                    <Link to={`/${props.url}/${item.id}`}>
                       <div>
                         <img
                           className="ListCard-image"
@@ -47,7 +47,7 @@ const CreatorListCard = () => {
                       <h5>{item.description}</h5>
                     </div>
                     <div>
-                      <Link to={`/productcreator/${item.id}`}>
+                      <Link to={`/${props.url}/${item.id}`}>
                         <button className="mt-3 ListCard-btn">
                           View Details
                         </button>

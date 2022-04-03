@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { fetchCreatorProduct } from "../../redux/actions/creatorProducts";
-import ProductCreatorNavbar from "./ProductCreatorNavbar";
-import Sidebar from "./Sidebar";
+import ProductCreatorNavbar from "./Navbar/ProductCreatorNavbar";
+import Sidebar from "./Navbar/Sidebar";
 
 const ProductCreator = () => {
   const dispatch = useDispatch();
@@ -27,9 +27,7 @@ const ProductCreator = () => {
           }}
         >
           <ProductCreatorNavbar />
-          <div className="container mt-5">
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
       </div>
     </>

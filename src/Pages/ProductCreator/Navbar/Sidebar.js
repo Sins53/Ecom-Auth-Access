@@ -11,9 +11,7 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div
-      style={{ display: "flex", height: "100%", overflow: "scroll initial" }}
-    >
+    <div style={{ display: "flex", height: "100%" }}>
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         <CDBSidebarHeader
           prefix={
@@ -29,7 +27,7 @@ const Sidebar = () => {
           <CDBSidebarMenu>
             <NavLink exact to="/creator" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="columns">
-                <h3>Dahboard</h3>
+                <h3>Dashboard</h3>
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/" activeClassName="activeClicked">
@@ -37,7 +35,11 @@ const Sidebar = () => {
                 <h3>Lobby</h3>
               </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/profile" activeClassName="activeClicked">
+            <NavLink
+              exact
+              to="/creator/products"
+              activeClassName="activeClicked"
+            >
               <CDBSidebarMenuItem icon="user">
                 <h3>Actions</h3>
               </CDBSidebarMenuItem>

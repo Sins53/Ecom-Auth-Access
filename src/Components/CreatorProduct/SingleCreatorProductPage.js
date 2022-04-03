@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const SingleCreatorProductPage = () => {
+const SingleCreatorProductPage = (props) => {
   const { id } = useParams();
 
   const creatorProductList = useSelector(
@@ -11,6 +11,9 @@ const SingleCreatorProductPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (props.setData) {
+      props.setData(arr);
+    }
   }, []);
 
   var arr = creatorProductList.filter(checkFilter);
@@ -43,21 +46,25 @@ const SingleCreatorProductPage = () => {
                   >
                     {"Stock left: " + item.quantity}
                   </h3>
-                  <h3>Description : {item.description}</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea
-                    excepturi odio deserunt laboriosam? Numquam, veniam. Dolore
-                    neque obcaecati similique a, velit sequi? Doloremque,
-                    temporibus eveniet nesciunt consequuntur blanditiis minima
-                    quisquam beatae incidunt nihil! Dolorem error tenetur ea
-                    fuga non illo quibusdam? Ratione ipsa hic, eos perspiciatis
-                    sequi, velit sapiente delectus vero rem labore maiores
-                    quibusdam beatae consequatur esse commodi quod quia eaque
-                    culpa magnam ab at porro. Quos excepturi impedit et eveniet
-                    officia, sint soluta qui. Ratione blanditiis earum illum
-                    laudantium fuga molestiae dolor unde reiciendis quae quod
-                    officiis vel ex ipsam repellat.
-                  </p>
+                  <div
+                    className="Creator-Single-Page-scroll"
+                    style={{
+                      height: "20rem",
+                      paddingRight: "1rem",
+                      overflow: "auto",
+                    }}
+                  >
+                    <h3>Description : {item.description}</h3>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Nobis possimus alias veritatis corporis quod temporibus
+                      consequatur, ipsam beatae officiis consectetur explicabo,
+                      repudiandae inventore quae tenetur odio doloribus earum
+                      architecto rerum, sit perspiciatis commodi ut. At id quam
+                      ratione vel voluptatum similique magnam voluptate libero
+                      harum dolorum eaque, modi iste commodi!
+                    </p>
+                  </div>
 
                   <button
                     className="ListCard-btn mt-4 fun"

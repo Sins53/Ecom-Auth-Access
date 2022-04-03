@@ -15,6 +15,9 @@ import UserRoleMap from "./Pages/Admin/UserRoleMap";
 import Guide from "./Pages/Guide";
 import MissingPage from "./Pages/MissingPage";
 import ProductCreator from "./Pages/ProductCreator";
+import AllItemsPage from "./Pages/ProductCreator/DisplayProducts/AllItemsPage";
+import SingleItemsPage from "./Pages/ProductCreator/DisplayProducts/SingleItemsPage";
+import Message from "./Pages/ProductCreator/Message";
 import UnautorizedPage from "./Pages/UnautorizedPage";
 
 function App() {
@@ -67,8 +70,9 @@ function App() {
         {/* for Product creators */}
         <Route element={<RequireAuth allowedRoles={"creator"} />}>
           <Route path="/creator/" element={<ProductCreator />}>
-            <Route path="/creator/roles" element={<Role />} />
-            <Route path="/creator/user" element={<User />} />
+            <Route path="/creator/" element={<Message />} />
+            <Route path="/creator/products" element={<AllItemsPage />} />
+            <Route path="/creator/products/:id" element={<SingleItemsPage />} />
           </Route>
         </Route>
       </Routes>
