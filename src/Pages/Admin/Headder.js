@@ -54,7 +54,9 @@ const Headder = () => {
                         <Link to={"/admin/roles"}>Role Setting</Link>
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item>Something else here</NavDropdown.Item>
+                      <NavDropdown.Item>
+                        <Link to={"/pageNotFound"}>404 Page</Link>
+                      </NavDropdown.Item>
                     </NavDropdown>
                   </Nav>
                 </Offcanvas.Body>

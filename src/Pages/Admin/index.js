@@ -6,6 +6,7 @@ import Headder from "./Headder";
 
 const Admin = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);

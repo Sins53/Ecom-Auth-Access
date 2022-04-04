@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import AdminAddModal from "../../Components/AdminFeatures/AdminAddModal";
+import UserList from "../../Components/AdminFeatures/UserList";
 
 const User = () => {
   const isLoading = useSelector((state) => state.user.isLoading);
@@ -17,6 +18,7 @@ const User = () => {
             <div className="text-end">
               <AdminAddModal />
             </div>
+            <UserList />
           </div>
         </>
       )}
